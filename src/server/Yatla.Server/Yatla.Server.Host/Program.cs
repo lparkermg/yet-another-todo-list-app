@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Yatla.Server.Host
+namespace Yatla.Server
 {
     public class Program
     {

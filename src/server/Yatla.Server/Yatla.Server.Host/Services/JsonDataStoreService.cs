@@ -7,7 +7,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using System.Timers;
 
-namespace Yatla.Server.Host.Services
+namespace Yatla.Server.Services
 {
     public sealed class JsonDataStoreService : IDataStore<TodoItem>
     {

@@ -4,6 +4,7 @@
     <TargetFramework>net5.0</TargetFramework>
     <UserSecretsId>fa4275ce-bbfc-4b55-96d6-e03c98e6c9c7</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <AssemblyName>Yatla.Server</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>

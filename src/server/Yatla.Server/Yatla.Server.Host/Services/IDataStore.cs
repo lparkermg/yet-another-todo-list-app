@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Yatla.Server.Host.Services
+namespace Yatla.Server.Services
 {
     public interface IDataStore<T>
     {

@@ -1,14 +1,13 @@
 using System;
+using System.Text.Json.Serialization;
 
-namespace Yatla.Server.Host
+namespace Yatla.Server
 {
-    public sealed class TodoItem
+    public sealed record TodoItem
     {
-        public int Id { get; init; }
-
         public string Data { get; init; }
 
-        public bool Done { get; set; }
+        public bool Done { get; init; }
 
         public DateTime CreatedAt { get; init; }
     }

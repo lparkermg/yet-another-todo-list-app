@@ -4,9 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Yatla.Server.Host.Services;
+using Yatla.Server.Services;
 
-namespace Yatla.Server.Host.Controllers
+namespace Yatla.Server.Controllers
 {
     [ApiController]
     [Route("[controller]")]
@@ -25,6 +25,17 @@ namespace Yatla.Server.Host.Controllers
         public async Task<IEnumerable<TodoItem>> Get()
         {
             return await _store.Get();
+        }
+
+        [HttpPost]
+        public async Task Post(string data)
+        {
+            await _store.Save(new TodoItem
+            {
+                Data = data,
+                Done = false,
+                CreatedAt = DateTime.Now,
+            });
         }
     }
 }
