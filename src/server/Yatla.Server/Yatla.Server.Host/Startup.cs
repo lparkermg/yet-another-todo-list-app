@@ -11,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Yatla.Server.Host.Services;
 
 namespace Yatla.Server.Host
 {
@@ -26,7 +27,7 @@ namespace Yatla.Server.Host
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.AddSingleton<IDataStore<TodoItem>, JsonDataStoreService>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -50,6 +51,7 @@ namespace Yatla.Server.Host
 
             app.UseAuthorization();
 
+            app.UseHealthChecks("/health");
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
