@@ -3,9 +3,9 @@ using System.Threading.Tasks;
 
 namespace Yatla.Server.Host.Services
 {
-    interface IDataStore<T>
+    public interface IDataStore<T>
     {
-        Task<IList<T>> Get(int skip, int take);
+        Task<IList<T>> Get(int skip = 0, int take = int.MaxValue);
 
         Task Save(T data);
     }

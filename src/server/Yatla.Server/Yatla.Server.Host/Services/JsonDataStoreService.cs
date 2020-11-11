@@ -47,7 +47,7 @@ namespace Yatla.Server.Host.Services
 
         public async Task<IList<TodoItem>> Get(int skip = 0, int take = int.MaxValue)
         {
-            return (IList<TodoItem>)Task.Run(() => _items.Skip(skip).Take(take).ToList());
+            return await Task.Run(() => _items.Skip(skip).Take(take).ToList());
         }
 
         public async Task Save(TodoItem data)
