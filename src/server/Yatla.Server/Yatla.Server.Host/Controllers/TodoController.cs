@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Yatla.Server.Host.Services;
 
 namespace Yatla.Server.Host.Controllers
 {
@@ -12,16 +13,18 @@ namespace Yatla.Server.Host.Controllers
     public sealed class TodoController : ControllerBase
     {
         private readonly ILogger<TodoController> _logger;
+        private readonly IDataStore<TodoItem> _store;
 
-        public TodoController(ILogger<TodoController> logger)
+        public TodoController(ILogger<TodoController> logger, IDataStore<TodoItem> dataStore)
         {
             _logger = logger;
+            _store = dataStore;
         }
 
         [HttpGet]
-        public IEnumerable<TodoItem> Get()
+        public async Task<IEnumerable<TodoItem>> Get()
         {
-            return null;
+            return await _store.Get();
         }
     }
 }
