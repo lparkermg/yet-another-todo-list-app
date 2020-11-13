@@ -28,14 +28,9 @@ namespace Yatla.Server.Controllers
         }
 
         [HttpPost]
-        public async Task Post(string data)
+        public async Task Post([FromBody]TodoItem data)
         {
-            await _store.Save(new TodoItem
-            {
-                Data = data,
-                Done = false,
-                CreatedAt = DateTime.Now,
-            });
+            await _store.Save(data with { Done = false, CreatedAt = DateTime.Now});
         }
     }
 }

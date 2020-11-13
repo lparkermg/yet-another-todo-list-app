@@ -52,7 +52,10 @@ namespace Yatla.Server.Services
 
         public async Task Save(TodoItem data)
         {
-            await Task.Run(() => _items.Add(data));
+            await Task.Run(() => { 
+                _items.Add(data);
+                SaveToFile(null, null);
+            });
         }
     }
 }
