@@ -1,0 +1,19 @@
+version: "3.8"
+services:
+  yatla.server:
+    build:
+      context: ./src/server/Yatla.Server
+      dockerfile: Dockerfile
+    environment:
+      - ASPNETCORE_URLS=https://+:443
+      - ASPNETCORE_HTTPS_PORT=8001
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=password
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/localcert.pfx
+      - ASPNETCORE_ENVIRONMENT=Development
+      - YATLA_AllowedHosts=*
+      - YATLA_JsonDataStore__File=/store/dataStore.json
+    ports:
+      - "8001:443"
+    volumes:
+      - ./:/store:rw
+      - ~/.aspnet/https:/https:ro
