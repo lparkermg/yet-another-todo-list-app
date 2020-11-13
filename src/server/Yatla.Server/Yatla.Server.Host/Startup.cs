@@ -1,16 +1,10 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Yatla.Server.Services;
 
 namespace Yatla.Server
@@ -29,6 +23,7 @@ namespace Yatla.Server
         {
             services.AddSingleton<IDataStore<TodoItem>>(s => new JsonDataStoreService(Configuration.GetValue<string>("JsonDataStore:File"), new TimeSpan(0, 1, 0)));
             services.AddControllers();
+            services.AddHealthChecks();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Yatla.Server.Host", Version = "v1" });
@@ -55,6 +50,8 @@ namespace Yatla.Server
             {
                 endpoints.MapControllers();
             });
+
+            app.UseHealthChecks("/health/live");
         }
     }
 }
