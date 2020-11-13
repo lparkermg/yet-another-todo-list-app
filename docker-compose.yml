@@ -15,5 +15,8 @@ services:
     ports:
       - "8001:443"
     volumes:
-      - ./:/store:rw
+      - yatla_data:/store
       - ~/.aspnet/https:/https:ro
+
+volumes:
+  yatla_data:
