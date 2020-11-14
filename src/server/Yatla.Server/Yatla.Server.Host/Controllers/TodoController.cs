@@ -28,9 +28,15 @@ namespace Yatla.Server.Controllers
         }
 
         [HttpPost]
-        public async Task Post([FromBody]TodoItem data)
+        public async Task NewItem([FromBody]TodoItem data)
         {
-            await _store.Save(data with { Done = false, CreatedAt = DateTime.Now});
+            await _store.Save(data with { Done = false, CreatedAt = DateTime.Now, Id = Guid.NewGuid() });
+        }
+
+        [HttpPatch]
+        public async Task MarkAsDone(Guid id)
+        {
+            await _store.Update(id, i => i with { Done = true });
         }
     }
 }

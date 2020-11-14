@@ -57,5 +57,22 @@ namespace Yatla.Server.Services
                 SaveToFile(null, null);
             });
         }
+
+        public async Task Update(Guid id, Func<TodoItem, TodoItem> updateAction)
+        {
+            await Task.Run(() =>
+            {
+                var item = _items.FirstOrDefault(i => i.Id == id);
+
+                if (item == null)
+                {
+                    return;
+                }
+
+                var itemIndex = _items.IndexOf(item);
+
+                _items[itemIndex] = updateAction(item);
+            });
+        }
     }
 }
