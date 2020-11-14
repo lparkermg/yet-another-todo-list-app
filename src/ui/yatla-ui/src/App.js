@@ -14,7 +14,6 @@ function App() {
       })
       .then(
         (result) => {
-          console.log(result)
           setItems(result ? JSON.parse(result) : []);
         }
       );

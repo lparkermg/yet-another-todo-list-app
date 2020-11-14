@@ -24,17 +24,46 @@ body {
   margin-right:auto;
   color: #241F29;
   border-radius: 1rem;
+  padding-bottom: 1rem;
 }
 
 .TodoList-Table {
   margin-left:auto;
   margin-right:auto;
-  width: 100%;
+  width: 95%;
   text-align: left;
+  border-collapse: separate;
+  border-spacing: 0rem 0.25rem;
 }
 
-table {
-  padding-left:0.5rem;
+tr td:first-child {
+  -moz-border-radius-topleft: 5px;
+  -moz-border-radius-bottomleft: 5px;
+  -webkit-border-top-left-radius: 5px;
+  -webkit-border-bottom-left-radius: 5px;
+
+}
+
+tr td:last-child {
+  -moz-border-radius-topright: 5px;
+  -moz-border-radius-bottomright: 5px;
+  -webkit-border-top-right-radius: 5px;
+  -webkit-border-bottom-right-radius: 5px;
+}
+
+tr th:first-child {
+  -moz-border-radius-topleft: 5px;
+  -moz-border-radius-bottomleft: 5px;
+  -webkit-border-top-left-radius: 5px;
+  -webkit-border-bottom-left-radius: 5px;
+
+}
+
+tr th:last-child {
+  -moz-border-radius-topright: 5px;
+  -moz-border-radius-bottomright: 5px;
+  -webkit-border-top-right-radius: 5px;
+  -webkit-border-bottom-right-radius: 5px;
 }
 
 .TodoList-Table__Cell_Large {
@@ -43,6 +72,50 @@ table {
 
 .TodoList-Table__Call_Small {
   width: 10%;
+}
+
+.TodoList-Table__Header {
+  background-color: #7E6B8F;
+  border-radius: 1rem;
+}
+
+.TodoList-Table__Header th{
+  padding:0.3rem;
+  color: #F6F4F7;
+}
+
+.TodoItem-Row{
+  background-color: #9A8BA7;
+  margin-top:5rem;
+  border-radius: 1rem;
+  transition: 0.3s;
+  color: #F6F4F7;
+}
+
+.TodoItem-Row:hover {
+  background-color: #BFB5C7;
+  color: #241F29;
+}
+
+.TodoItem-Row td{
+  padding:0.3rem;
+}
+
+.TodoItem-Row__AddNew td{
+  text-align: center;
+  padding:0.3rem;
+  border-radius: 1rem; 
+  border: 0.2rem solid #9A8BA7;
+  font-size:1rem;
+  font-weight: bold;
+  color: #7E6B8F;
+  transition: 0.3s;
+}
+
+.TodoItem-Row__AddNew td:hover{
+  background-color: #9A8BA7;
+  border: 0.2rem solid #BFB5C7;
+  color: #F6F4F7;
 }
 
 .App-header {

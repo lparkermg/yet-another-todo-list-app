@@ -6,23 +6,24 @@ class TodoList extends Component {
         return (<TodoItem createdAt={item.createdAt} data={item.data} />);
     }
     render(){
-        console.log(this.props);
         const items = this.props.listItems.map(i => {
             const row = [this.buildItem(i)];
             return row;
         })
         return (
             <div className="TodoList-Container">
-                Todo List Coming Soon...
+                Remember to do the stuff!
                 <table className="TodoList-Table">
                     <thead>
-                        <tr>
+                        <tr className="TodoList-Table__Header">
                             <th>Created At</th>
                             <th>Todo</th>
-                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
+                        <tr className="TodoItem-Row__AddNew">
+                            <td colSpan="2">+</td>
+                        </tr>
                         {[].concat.apply([], items)}
                     </tbody>
                 </table>
