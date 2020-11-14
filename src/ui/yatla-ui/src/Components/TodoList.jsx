@@ -11,8 +11,7 @@ class TodoList extends Component {
             return row;
         })
         return (
-            <div className="TodoList-Container">
-                Remember to do the stuff!
+            <div className="Container">
                 <table className="TodoList-Table">
                     <thead>
                         <tr className="TodoList-Table__Header">
@@ -21,9 +20,6 @@ class TodoList extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr className="TodoItem-Row__AddNew">
-                            <td colSpan="2">+</td>
-                        </tr>
                         {[].concat.apply([], items)}
                     </tbody>
                 </table>
