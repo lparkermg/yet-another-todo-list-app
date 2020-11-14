@@ -28,6 +28,17 @@ namespace Yatla.Server
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Yatla.Server.Host", Version = "v1" });
             });
+
+            services.AddCors(ops =>
+            {
+                // TODO: Setup an actual policy at some point.
+                ops.AddPolicy(name: "_allowLocalOnly", builder =>
+                {
+                    builder.AllowAnyOrigin()
+                        .AllowAnyHeader()
+                        .AllowAnyMethod();
+                });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -41,7 +52,7 @@ namespace Yatla.Server
             }
 
             app.UseHttpsRedirection();
-
+            app.UseCors("_allowLocalOnly");
             app.UseRouting();
 
             app.UseAuthorization();
