@@ -2,7 +2,15 @@ import React, { Component } from 'react';
 import TodoItem from './TodoItem';
 
 class TodoList extends Component {
+    buildItem(item){
+        return (<TodoItem createdAt={item.createdAt} data={item.data} />);
+    }
     render(){
+        console.log(this.props);
+        const items = this.props.listItems.map(i => {
+            const row = [this.buildItem(i)];
+            return row;
+        })
         return (
             <div className="TodoList-Container">
                 Todo List Coming Soon...
@@ -15,7 +23,7 @@ class TodoList extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        <TodoItem createdAt="Date Time" data="This is some test data" done="No"/>
+                        {[].concat.apply([], items)}
                     </tbody>
                 </table>
             </div>

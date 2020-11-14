@@ -4,9 +4,9 @@ function TodoItem(props) {
     return (
     <>
         <tr>
-            <td>{props.createdAt}</td>
+            <td>{new Date(props.createdAt).toLocaleString('en-gb')}</td>
             <td className="TodoList-Table__Cell_Large">{props.data}</td>
-            <td className="TodoList-Table__Vell_Small">{props.done}</td>
+            <td className="TodoList-Table__Vell_Small"></td>
         </tr>
     </>
     );

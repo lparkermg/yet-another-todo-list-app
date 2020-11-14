@@ -30,6 +30,11 @@ body {
   margin-left:auto;
   margin-right:auto;
   width: 100%;
+  text-align: left;
+}
+
+table {
+  padding-left:0.5rem;
 }
 
 .TodoList-Table__Cell_Large {
