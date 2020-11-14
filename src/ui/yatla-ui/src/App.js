@@ -41,7 +41,7 @@ function App() {
 
   function handleMarkAsDone(id){
     fetch("https://localhost:8001/todo?id=" + id,{ method: 'PATCH' })
-    .them((result) => console.log("Done"),
+    .then((result) => console.log("Done"),
           (error) => console.log(error));
   }
 
