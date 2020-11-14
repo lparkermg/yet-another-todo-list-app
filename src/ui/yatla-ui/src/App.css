@@ -106,21 +106,9 @@ tr th:last-child {
   padding:0.3rem;
 }
 
-.TodoItem-Row__AddNew td{
-  text-align: center;
-  padding:0.3rem;
-  border-radius: 1rem; 
-  border: 0.2rem solid #9A8BA7;
-  font-size:1rem;
-  font-weight: bold;
-  color: #7E6B8F;
-  transition: 0.3s;
-}
-
-.TodoItem-Row__AddNew td:hover{
-  background-color: #9A8BA7;
-  border: 0.2rem solid #BFB5C7;
-  color: #F6F4F7;
+.TodoItem-Row-Empty{
+  color: #9A8BA7;
+  text-align:center;
 }
 
 .TodoItem-Button {
@@ -156,7 +144,10 @@ tr th:last-child {
   border-bottom:0.15rem solid #9A8BA7;
   border-radius:0.3rem;
   padding:0.5rem;
-  transition:0.5s
+  transition:0.5s;
+  width:90%;
+  height:5rem;
+  resize:none;
 }
 
 .TodoItem-InputText:focus {

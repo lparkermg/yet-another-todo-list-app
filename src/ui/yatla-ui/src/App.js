@@ -13,8 +13,10 @@ function App() {
     loadData();
     clearInterval(intervalId);
     setIntervalId(setInterval(() => {loadData()}, 10000));
-    function loadData(){
-      fetch("https://localhost:8001/todo")
+  }, [])
+
+  function loadData(){
+    fetch("https://localhost:8001/todo")
       .then((res) => {
         return res.text();
       },
@@ -24,8 +26,7 @@ function App() {
           setItems(result ? JSON.parse(result) : []);
         },
         (error) => console.log(error));
-    }
-  }, [])
+  }
 
   function handleSubmitNewItem(item){
     const body = JSON.stringify({data: item});
@@ -36,12 +37,18 @@ function App() {
       },
       body: body
     })
-    .then(res => console.log("Done"), error => console.log(error));
+    .then(res => {
+      console.log("Done");
+      loadData();
+    }, error => console.log(error));
   }
 
   function handleMarkAsDone(id){
     fetch("https://localhost:8001/todo?id=" + id,{ method: 'PATCH' })
-    .then((result) => console.log("Done"),
+    .then((result) => {
+            console.log("Done");
+            loadData();
+          },
           (error) => console.log(error));
   }
 

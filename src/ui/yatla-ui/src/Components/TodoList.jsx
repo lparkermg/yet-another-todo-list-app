@@ -20,7 +20,13 @@ class TodoList extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {[].concat.apply([], items)}
+                        {items.length === 0 ? (
+                            <tr className="TodoItem-Row-Empty" >
+                                <td colSpan="2">No items</td>
+                            </tr>
+                        ) :
+                        (<>{[].concat.apply([], items)}</>)}
+                        
                     </tbody>
                 </table>
             </div>

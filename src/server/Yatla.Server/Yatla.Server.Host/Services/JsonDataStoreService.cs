@@ -47,7 +47,7 @@ namespace Yatla.Server.Services
 
         public async Task<IList<TodoItem>> Get(int skip = 0, int take = int.MaxValue)
         {
-            return await Task.Run(() => _items.Skip(skip).Take(take).ToList());
+            return await Task.Run(() => _items.Where(i => !i.Done).Skip(skip).Take(take).OrderBy(i => i.CreatedAt).ToList());
         }
 
         public async Task Save(TodoItem data)
