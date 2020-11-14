@@ -3,7 +3,7 @@ import TodoItem from './TodoItem';
 
 class TodoList extends Component {
     buildItem(item){
-        return (<TodoItem createdAt={item.createdAt} data={item.data} />);
+        return (<TodoItem key={item.id} itemId={item.id} createdAt={item.createdAt} data={item.data} markAsDone={this.props.markAsDone}/>);
     }
     render(){
         const items = this.props.listItems.map(i => {

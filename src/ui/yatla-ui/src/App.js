@@ -39,11 +39,17 @@ function App() {
     .then(res => console.log("Done"), error => console.log(error));
   }
 
+  function handleMarkAsDone(id){
+    fetch("https://localhost:8001/todo?id=" + id,{ method: 'PATCH' })
+    .them((result) => console.log("Done"),
+          (error) => console.log(error));
+  }
+
   return (
     <div className="App">
       <NavigationBar/>
       <NewItem onClick={handleSubmitNewItem} />
-      <TodoList listItems={items}/>
+      <TodoList listItems={items} markAsDone={handleMarkAsDone} />
     </div>
   );
 }
