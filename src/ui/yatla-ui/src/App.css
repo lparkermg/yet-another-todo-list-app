@@ -1,16 +1,43 @@
+body {
+  background-color: #EDEAEF;
+}
+
 .App {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.Navigation {
+  height: 3rem;
+  background-color: #7E6B8F;
+  color: #F6F4F7;
+  font-size:1.5rem;
+  font-weight: bold;
+  padding-top:0.75rem
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.TodoList-Container {
+  margin-top: 0.25rem;
+  align-items:center;
+  background-color: #DAD5DF;
+  width: 60%;
+  margin-left:auto;
+  margin-right:auto;
+  color: #241F29;
+  border-radius: 1rem;
+}
+
+.TodoList-Table {
+  margin-left:auto;
+  margin-right:auto;
+  width: 100%;
+}
+
+.TodoList-Table__Cell_Large {
+  width: 70%;
+}
+
+.TodoList-Table__Call_Small {
+  width: 10%;
 }
 
 .App-header {
@@ -26,13 +53,4 @@
 
 .App-link {
   color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
