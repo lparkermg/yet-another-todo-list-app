@@ -39,15 +39,16 @@ function App() {
       body: body
     })
     .then(res => {
-      console.log("Done");
       loadData();
-    }, error => console.log(error));
+      return res.json()
+    })
+    .then(res => console.log(res), error => console.log(error));
   }
 
   function handleMarkAsDone(id){
     fetch(`${Constants.API_BASE_URL}/todo?id=${id}`,{ method: 'PATCH' })
     .then((result) => {
-            console.log("Done");
+            console.log(result);
             loadData();
           },
           (error) => console.log(error));

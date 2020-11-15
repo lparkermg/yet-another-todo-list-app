@@ -9,7 +9,7 @@ services:
       - ASPNETCORE_HTTPS_PORT=8001
       - ASPNETCORE_Kestrel__Certificates__Default__Password=password
       - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/localcert.pfx
-      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_ENVIRONMENT=Production
       - YATLA_AllowedHosts=*
       - YATLA_JsonDataStore__File=/store/dataStore.json
     ports:

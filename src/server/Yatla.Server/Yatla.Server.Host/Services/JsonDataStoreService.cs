@@ -66,7 +66,7 @@ namespace Yatla.Server.Services
 
                 if (item == null)
                 {
-                    return;
+                    throw new KeyNotFoundException($"Id {id}, was not found.");
                 }
 
                 var itemIndex = _items.IndexOf(item);
