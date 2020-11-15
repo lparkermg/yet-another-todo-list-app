@@ -28,9 +28,33 @@ namespace Yatla.Server.Controllers
         }
 
         [HttpPost]
-        public async Task Post([FromBody]TodoItem data)
+        public async Task<IActionResult> NewItem([FromBody]TodoItem data)
         {
-            await _store.Save(data with { Done = false, CreatedAt = DateTime.Now});
+            if (string.IsNullOrWhiteSpace(data.Data))
+            {
+                return Problem("Data cannot be null, empty or whitespace.", null, 406, "Data Validation Error", "Validation Error");
+            }
+
+            await _store.Save(data with { Done = false, CreatedAt = DateTime.Now, Id = Guid.NewGuid() });
+            return Ok();
+        }
+
+        [HttpPatch]
+        public async Task<IActionResult> MarkAsDone(Guid id)
+        {
+            try
+            {
+                await _store.Update(id, i => i with { Done = true });
+                return Ok();
+            }
+            catch(KeyNotFoundException knfe)
+            {
+                return Problem(knfe.Message, null, 404, "Id not found", "Id Error");
+            }
+            catch(Exception e)
+            {
+                return Problem(e.Message, null, 500, "Error", "Server Error");
+            }
         }
     }
 }

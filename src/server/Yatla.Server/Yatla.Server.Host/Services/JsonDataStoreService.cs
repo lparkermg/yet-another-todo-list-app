@@ -47,7 +47,7 @@ namespace Yatla.Server.Services
 
         public async Task<IList<TodoItem>> Get(int skip = 0, int take = int.MaxValue)
         {
-            return await Task.Run(() => _items.Skip(skip).Take(take).ToList());
+            return await Task.Run(() => _items.Where(i => !i.Done).Skip(skip).Take(take).OrderBy(i => i.CreatedAt).ToList());
         }
 
         public async Task Save(TodoItem data)
@@ -55,6 +55,23 @@ namespace Yatla.Server.Services
             await Task.Run(() => { 
                 _items.Add(data);
                 SaveToFile(null, null);
+            });
+        }
+
+        public async Task Update(Guid id, Func<TodoItem, TodoItem> updateAction)
+        {
+            await Task.Run(() =>
+            {
+                var item = _items.FirstOrDefault(i => i.Id == id);
+
+                if (item == null)
+                {
+                    throw new KeyNotFoundException($"Id {id}, was not found.");
+                }
+
+                var itemIndex = _items.IndexOf(item);
+
+                _items[itemIndex] = updateAction(item);
             });
         }
     }
