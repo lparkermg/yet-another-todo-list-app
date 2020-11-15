@@ -18,5 +18,15 @@ services:
       - yatla_data:/store
       - ~/.aspnet/https:/https:ro
 
+  yatla.ui:
+    build:
+      context: ./src/ui/
+      dockerfile: Dockerfile
+    environment:
+      - API_BASE_URL=https://yatla.server:443
+      - LIST_REFRESH_RATE=10000
+    ports:
+      - "8888:8888"
+  
 volumes:
   yatla_data:

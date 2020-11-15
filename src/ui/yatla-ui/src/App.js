@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import NavigationBar from './Components/NavigationBar';
 import TodoList from './Components/TodoList';
 import NewItem from './Components/NewItem';
+import Constants from './Constants/constants.js';
 
 function App() {
   const [items, setItems] = useState([]);
@@ -12,11 +13,11 @@ function App() {
   useEffect(() => {
     loadData();
     clearInterval(intervalId);
-    setIntervalId(setInterval(() => {loadData()}, 10000));
+    setIntervalId(setInterval(() => {loadData()}, Constants.LIST_REFRESH_RATE));
   }, [])
 
   function loadData(){
-    fetch("https://localhost:8001/todo")
+    fetch(`${Constants.API_BASE_URL}/todo`)
       .then((res) => {
         return res.text();
       },
@@ -30,7 +31,7 @@ function App() {
 
   function handleSubmitNewItem(item){
     const body = JSON.stringify({data: item});
-    fetch("https://localhost:8001/todo",{
+    fetch(`${Constants.API_BASE_URL}/todo`,{
       method: 'POST',
       headers: {
         'Content-Type':'application/json'
@@ -44,7 +45,7 @@ function App() {
   }
 
   function handleMarkAsDone(id){
-    fetch("https://localhost:8001/todo?id=" + id,{ method: 'PATCH' })
+    fetch(`${Constants.API_BASE_URL}/todo?id=${id}`,{ method: 'PATCH' })
     .then((result) => {
             console.log("Done");
             loadData();
