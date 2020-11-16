@@ -121,6 +121,7 @@ tr th:last-child {
   font-size:1rem;
   font-weight: bold;
   transition:0.25s;
+  width:90%;
 }
 .TodoItem-Button:disabled, .TodoItem-Button:disabled:hover {
   background-color:#282c34;

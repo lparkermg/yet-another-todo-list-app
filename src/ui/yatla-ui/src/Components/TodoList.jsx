@@ -17,12 +17,13 @@ class TodoList extends Component {
                         <tr className="TodoList-Table__Header">
                             <th>Created At</th>
                             <th>Todo</th>
+                            <th />
                         </tr>
                     </thead>
                     <tbody>
                         {items.length === 0 ? (
                             <tr className="TodoItem-Row-Empty" >
-                                <td colSpan="2">No items</td>
+                                <td colSpan="3">No items</td>
                             </tr>
                         ) :
                         (<>{[].concat.apply([], items)}</>)}
