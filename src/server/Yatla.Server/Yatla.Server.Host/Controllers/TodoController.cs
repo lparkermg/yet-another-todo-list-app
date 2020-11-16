@@ -56,5 +56,28 @@ namespace Yatla.Server.Controllers
                 return Problem(e.Message, null, 500, "Error", "Server Error");
             }
         }
+
+        [HttpPut]
+        public async Task<IActionResult> SaveUpdate([FromBody]TodoItem data)
+        {
+            if (string.IsNullOrWhiteSpace(data.Data))
+            {
+                return Problem("Data cannot be null, empty or whitespace.", null, 406, "Data Validation Error", "Validation Error");
+            }
+
+            try
+            {
+                await _store.Update(data.Id, i => i with { Data = data.Data, Done = data.Done });
+                return Ok();
+            }
+            catch(KeyNotFoundException knfe)
+            {
+                return Problem(knfe.Message, null, 404, "Id not found", "Id Error");
+            }
+            catch(Exception e)
+            {
+                return Problem(e.Message, null, 500, "Error", "Server Error");
+            }
+        }
     }
 }
